@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Health Dashboard</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body onload="checkLogin()">
+
+    <!-- =====================================================
+    SIDEBAR
+    ====================================================== -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-logo">
+
+            🏥 Health AI
+
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="#home">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="#symptoms">🤒 Symptom Analyzer</a>
+            </li>
+
+            <li>
+                <a href="#bmi">⚖️ BMI Calculator</a>
+            </li>
+
+            <li>
+                <a href="#heart">❤️ Heart Disease</a>
+            </li>
+
+            <li>
+                <a href="#diabetes">🩸 Diabetes</a>
+            </li>
+
+            <li>
+                <a href="#mental">🧠 Mental Health</a>
+            </li>
+
+            <li>
+                <a href="#" onclick="logoutUser()">
+                    🚪 Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- =====================================================
+    MAIN CONTENT
+    ====================================================== -->
+
+    <div class="main-content">
+
+        <!-- =================================================
+        HERO SECTION
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <div class="hero-content">
+
+                <h1>
+
+                    AI Healthcare Dashboard
+
+                </h1>
+
+                <p>
+
+                    Predict diseases and analyze your
+                    health using Artificial Intelligence
+                    and Machine Learning.
+
+                </p>
+
+                <a href="#symptoms">
+
+                    <button class="hero-btn">
+
+                        Start Health Analysis
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+        SYMPTOM ANALYZER
+        ================================================== -->
+
+        <section
+            class="prediction-section"
+            id="symptoms"
+        >
+
+            <div class="card">
+
+                <h2>
+
+                    🤒 AI Symptom Analyzer
+
+                </h2>
+
+                <div class="form-grid">
+
+                    <input
+                        type="number"
+                        id="symptom-temp"
+                        placeholder="Body Temperature (95-105°F)"
+                    >
+
+                    <select id="symptom-cough">
+
+                        <option value="">
+                            Cough Severity
+                        </option>
+
+                        <option value="0">
+                            None
+                        </option>
+
+                        <option value="1">
+                            Mild
+                        </option>
+
+                        <option value="2">
+                            Severe
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-headache">
+
+                        <option value="">
+                            Headache
+                        </option>
+
+                        <option value="0">
+                            None
+                        </option>
+
+                        <option value="1">
+                            Mild
+                        </option>
+
+                        <option value="2">
+                            Severe
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-vomit">
+
+                        <option value="">
+                            Vomiting
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-fatigue">
+
+                        <option value="">
+                            Fatigue Level
+                        </option>
+
+                        <option value="0">
+                            Low
+                        </option>
+
+                        <option value="1">
+                            Medium
+                        </option>
+
+                        <option value="2">
+                            High
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-throat">
+
+                        <option value="">
+                            Sore Throat
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-bodypain">
+
+                        <option value="">
+                            Body Pain
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Mild
+                        </option>
+
+                        <option value="2">
+                            Severe
+                        </option>
+
+                    </select>
+
+                    <select id="symptom-diarrhea">
+
+                        <option value="">
+                            Diarrhea
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button onclick="analyzeSymptoms()">
+
+                    Analyze Symptoms
+
+                </button>
+
+                <div
+                    class="result"
+                    id="symptom-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+        BMI
+        ================================================== -->
+
+        <section
+            class="prediction-section"
+            id="bmi"
+        >
+
+            <div class="card">
+
+                <h2>
+
+                    ⚖️ BMI Calculator
+
+                </h2>
+
+                <div class="form-grid">
+
+                    <input
+                        type="number"
+                        id="bmi-height"
+                        placeholder="Height (100-220 cm)"
+                    >
+
+                    <input
+                        type="number"
+                        id="bmi-weight"
+                        placeholder="Weight (20-200 kg)"
+                    >
+
+                </div>
+
+                <button onclick="calculateBMI()">
+
+                    Calculate BMI
+
+                </button>
+
+                <div
+                    class="result"
+                    id="bmi-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+        HEART DISEASE
+        ================================================== -->
+
+        <section
+            class="prediction-section"
+            id="heart"
+        >
+
+            <div class="card">
+
+                <h2>
+
+                    ❤️ Heart Disease Prediction
+
+                </h2>
+
+                <div class="form-grid">
+
+                    <input
+                        type="number"
+                        id="heart-age"
+                        placeholder="Age (20-80)"
+                    >
+
+                    <select id="heart-sex">
+
+                        <option value="">
+                            Gender
+                        </option>
+
+                        <option value="1">
+                            Male
+                        </option>
+
+                        <option value="0">
+                            Female
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        id="heart-trestbps"
+                        placeholder="Blood Pressure (90-180)"
+                    >
+
+                    <input
+                        type="number"
+                        id="heart-chol"
+                        placeholder="Cholesterol (100-400)"
+                    >
+
+                    <select id="heart-fbs">
+
+                        <option value="">
+                            High Blood Sugar
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        id="heart-thalach"
+                        placeholder="Heart Rate (60-200)"
+                    >
+
+                    <select id="heart-exang">
+
+                        <option value="">
+                            Chest Pain During Exercise
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                    <select id="heart-smoking">
+
+                        <option value="">
+                            Smoking
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                    <select id="heart-family">
+
+                        <option value="">
+                            Family History
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button onclick="predictHeart()">
+
+                    Predict Heart Disease
+
+                </button>
+
+                <div
+                    class="result"
+                    id="heart-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+        DIABETES
+        ================================================== -->
+
+        <section
+            class="prediction-section"
+            id="diabetes"
+        >
+
+            <div class="card">
+
+                <h2>
+
+                    🩸 Diabetes Prediction
+
+                </h2>
+
+                <div class="form-grid">
+
+                    <input
+                        type="number"
+                        id="dia-age"
+                        placeholder="Age (1-100)"
+                    >
+
+                    <select id="dia-gender">
+
+                        <option value="">
+                            Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                    </select>
+
+                    <select id="dia-hypertension">
+
+                        <option value="">
+                            Hypertension
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                    <select id="dia-heart">
+
+                        <option value="">
+                            Heart Disease History
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                    </select>
+
+                    <select id="dia-smoking">
+
+                        <option value="">
+                            Smoking History
+                        </option>
+
+                        <option value="never">
+                            Never
+                        </option>
+
+                        <option value="former">
+                            Former
+                        </option>
+
+                        <option value="current">
+                            Current
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        id="dia-bmi"
+                        placeholder="BMI (15-45)"
+                    >
+
+                    <input
+                        type="number"
+                        id="dia-hba1c"
+                        placeholder="HbA1c (4-9)"
+                    >
+
+                    <input
+                        type="number"
+                        id="dia-glucose"
+                        placeholder="Glucose Level (70-300)"
+                    >
+
+                </div>
+
+                <button onclick="predictDiabetes()">
+
+                    Predict Diabetes
+
+                </button>
+
+                <div
+                    class="result"
+                    id="diabetes-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================================
+        MENTAL HEALTH
+        ================================================== -->
+
+        <section
+            class="prediction-section"
+            id="mental"
+        >
+
+            <div class="card">
+
+                <h2>
+
+                    🧠 Mental Health Prediction
+
+                </h2>
+
+                <div class="form-grid">
+
+                    <input
+                        type="number"
+                        id="mental-sleep"
+                        placeholder="Sleep Hours (1-12)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-screen"
+                        placeholder="Screen Time (0-15)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-exercise"
+                        placeholder="Exercise Minutes (0-180)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-fatigue"
+                        placeholder="Fatigue Level (1-10)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-mood"
+                        placeholder="Mood Score (1-10)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-social"
+                        placeholder="Social Hours (0-12)"
+                    >
+
+                    <input
+                        type="number"
+                        id="mental-coffee"
+                        placeholder="Coffee Cups (0-10)"
+                    >
+
+                    <select id="mental-diet">
+
+                        <option value="">
+                            Diet Quality
+                        </option>
+
+                        <option value="poor">
+                            Poor
+                        </option>
+
+                        <option value="average">
+                            Average
+                        </option>
+
+                        <option value="good">
+                            Good
+                        </option>
+
+                    </select>
+
+                    <select id="mental-weather">
+
+                        <option value="">
+                            Weather
+                        </option>
+
+                        <option value="sunny">
+                            Sunny
+                        </option>
+
+                        <option value="rainy">
+                            Rainy
+                        </option>
+
+                        <option value="cloudy">
+                            Cloudy
+                        </option>
+
+                        <option value="snowy">
+                            Snowy
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button onclick="predictMental()">
+
+                    Predict Mental Health
+
+                </button>
+
+                <div
+                    class="result"
+                    id="mental-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- =====================================================
+    FLOATING CHATBOT BUTTON
+    ====================================================== -->
+
+    <div
+        class="chatbot-toggle"
+        onclick="toggleChatbot()"
+    >
+
+        🤖
+
+    </div>
+
+    <!-- =====================================================
+    CHATBOT POPUP
+    ====================================================== -->
+
+    <div
+        class="chatbot-popup"
+        id="chatbot-popup"
+    >
+
+        <div class="chatbot-header">
+
+            <h3>
+
+                AI Health Assistant
+
+            </h3>
+
+            <span onclick="toggleChatbot()">
+
+                ✖
+
+            </span>
+
+        </div>
+
+        <div
+            class="chat-container"
+            id="chat-container"
+        >
+
+            <div class="bot-message">
+
+                👋 Hello! I am your AI Health Assistant.
+
+                Ask me about:
+                • fever
+                • diabetes
+                • BMI
+                • stress
+                • heart health
+                • symptoms
+
+            </div>
+
+        </div>
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chat-input"
+                placeholder="Ask health question..."
+            >
+
+            <button onclick="sendMessage()">
+
+                Send
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
