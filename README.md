@@ -1,1 +1,1 @@
-# disease-risk-prediction
+AI-powered Disease Prediction System built using Machine Learning algorithms like Random Forest Classifier, Random Forest Regressor, and Logistic Regression. The project predicts heart disease, diabetes, and mental health risk based on patient history through an interactive dashboard using FastAPI, Python, and data-driven analytics.
