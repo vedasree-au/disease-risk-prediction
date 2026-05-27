@@ -419,7 +419,7 @@ async function predictHeart() {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/predict/heart",
+            "https://disease-risk-prediction.onrender.com/predict/heart",
 
             {
 
@@ -561,7 +561,7 @@ async function predictDiabetes() {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/predict/diabetes",
+            "https://disease-risk-prediction.onrender.com/predict/diabetes",
 
             {
 
@@ -713,7 +713,7 @@ async function predictMental() {
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/predict/mental",
+            "https://disease-risk-prediction.onrender.com/predict/mental",
 
             {
 
@@ -793,165 +793,4 @@ async function predictMental() {
 
         console.log(error);
     }
-}
-
-// =========================================================
-// CHATBOT TOGGLE
-// =========================================================
-
-function toggleChatbot() {
-
-    const popup = document.getElementById(
-        "chatbot-popup"
-    );
-
-    if (
-
-        popup.style.display === "flex"
-
-    ) {
-
-        popup.style.display = "none";
-    }
-
-    else {
-
-        popup.style.display = "flex";
-    }
-}
-
-// =========================================================
-// AI CHATBOT
-// =========================================================
-
-function sendMessage() {
-
-    const input = document.getElementById(
-        "chat-input"
-    );
-
-    const message = input.value.trim();
-
-    if (message === "") {
-
-        return;
-    }
-
-    const chatContainer = document.getElementById(
-        "chat-container"
-    );
-
-    const userDiv = document.createElement(
-        "div"
-    );
-
-    userDiv.classList.add(
-        "user-message"
-    );
-
-    userDiv.innerHTML = message;
-
-    chatContainer.appendChild(userDiv);
-
-    let botReply =
-
-        `
-        🤖 I can help with:
-
-        • fever
-        • BMI
-        • diabetes
-        • heart disease
-        • stress
-        • sleep
-        • diet
-        • exercise
-        `;
-
-    if (
-
-        message.toLowerCase().includes(
-            "diabetes"
-        )
-
-    ) {
-
-        botReply =
-
-            `
-            🩸 Diabetes affects blood sugar levels.
-
-            📌 Tips:
-            • Reduce sugar intake
-            • Exercise daily
-            • Monitor glucose levels
-
-            ✅ Try the Diabetes Prediction tool.
-            `;
-    }
-
-    else if (
-
-        message.toLowerCase().includes(
-            "heart"
-        )
-
-    ) {
-
-        botReply =
-
-            `
-            ❤️ Heart health is important.
-
-            📌 Tips:
-            • Reduce oily foods
-            • Exercise regularly
-            • Monitor BP & cholesterol
-
-            ✅ Try the Heart Prediction tool.
-            `;
-    }
-
-    else if (
-
-        message.toLowerCase().includes(
-            "stress"
-        )
-
-    ) {
-
-        botReply =
-
-            `
-            🧠 Stress affects mental health.
-
-            📌 Tips:
-            • Sleep properly
-            • Reduce screen time
-            • Practice meditation
-
-            ✅ Try the Mental Health Prediction tool.
-            `;
-    }
-
-    setTimeout(() => {
-
-        const botDiv = document.createElement(
-            "div"
-        );
-
-        botDiv.classList.add(
-            "bot-message"
-        );
-
-        botDiv.innerHTML = botReply;
-
-        chatContainer.appendChild(botDiv);
-
-        chatContainer.scrollTop =
-            chatContainer.scrollHeight;
-
-    }, 500);
-
-    input.value = "";
 }
